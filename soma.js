@@ -1,6 +1,6 @@
 function somar(x, y) {
   if (isNaN(x) || isNaN(y)) {
-    throw new Error("Os valores precisam ser numéricos!");
+    throw new Error("Os valores precisam ser numéricosss!");
   }
 
   const resultado = x + y;
