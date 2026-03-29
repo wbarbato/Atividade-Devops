@@ -1,0 +1,61 @@
+name: CI/CD com Teste de Container
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+    
+      - name: Configurar Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Rodar testes
+        run: npm test
+
+  docker-test:
+    needs: ci
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Build da imagem
+        run: docker build -t atividade-devops .
+
+      - name: Rodar container
+        run: docker run -d -p 3000:3000 --name app-teste atividade-devops
+
+      - name: Aguardar container subir
+        run: sleep 10
+
+      - name: Teste simples no container
+        run: |
+          curl -f http://localhost:3000
+
+      - name: Parar container
+        if: always()
+        run: docker stop app-teste || true
+
+      - name: Remover container
+        if: always()
+        run: docker rm app-teste || true
+
+  cd:
+    needs: docker-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy
+        run: echo "Deploy concluído 🚀"
