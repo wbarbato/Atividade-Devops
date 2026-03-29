@@ -23,10 +23,19 @@ app.get('/soma', (req, res) => {
         return res.status(400).send('Os valores precisam ser numéricos!');
     }
 
+    ///dificil essa materia
+
+
+app.get('/dificil a materia ', (req, res) => {
+    res.send
+
+
     const resultado = somar(numA, numB);
 
     res.send(`Resultado: ${resultado}`);
 });
+
+
 
 const PORT = process.env.PORT || 3000;
 
