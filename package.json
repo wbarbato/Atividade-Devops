@@ -1,0 +1,15 @@
+{
+  "name": "atividade-devops",
+  "version": "1.0.0",
+  "description": "Projeto_pratica_utilziação_Git",
+  "main": "soma.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.3.0"
+  }
+}
