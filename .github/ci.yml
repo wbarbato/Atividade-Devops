@@ -11,11 +11,11 @@ jobs:
 
     steps:
       # 1. Baixar o código do repositório
-      - name: Checkout do código
+      - name: Baixar o código
         uses: actions/checkout@v3
 
       # 2. Configurar Node.js
-      - name: Configurar Node.js
+      - name: Instalar Node
         uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -28,6 +28,4 @@ jobs:
       - name: Rodar testes
         run: npm test
 
-      # 5. Build (se tiver)
-      - name: Build do projeto
-        run: npm run build --if-present
+      
