@@ -5,7 +5,7 @@ function somar(x, y) {
 
   const resultado = x + y;
 
-  return "A soma de " + x + " + " + y + " é igual a " + resultado;
+  return "A soma de " + x + " + " + y + " é igual a " + resultaddo;
 }
 
 module.exports = { somar };
